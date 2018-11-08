@@ -5,16 +5,16 @@ I would like to render an alpaca for myself. So i decide to write a ray tracing 
 The project is based on the [RayTracingDemos](/alpaca2333/RayTracingDemos).
 
 ## Features
-[√] Basic shapes
-[√] Anti-aliasing
-[√] Diffuse reflection material
-[√] Mirrors
-[ ] motion blur
-[√] Glass
-[√] DOF(Depth of fields)
-[√] focus
-[ ] Custom texture
-[ ] Custom Shape from universal 3d model files support (e.g. *.obj *.fbx)
-[ ] Path tracing 
+[√] Basic shapes <br/>
+[√] Anti-aliasing <br/>
+[√] Diffuse reflection material <br/>
+[√] Mirrors <br/>
+[ ] motion blur <br/>
+[√] Glass <br/>
+[√] DOF(Depth of fields) <br/>
+[√] focus <br/>
+[ ] Custom texture <br/>
+[ ] Custom Shape from universal 3d model files support (e.g. *.obj *.fbx) <br/>
+[ ] Path tracing <br/>
 
 Still working on it!!
