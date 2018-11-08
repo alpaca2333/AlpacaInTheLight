@@ -2,7 +2,6 @@
 Serious ray tracing renderer.
 
 I would like to render an alpaca for myself. So i decide to write a ray tracing renderer to do this. 
-The project is based on the [RayTracingDemos](/alpaca2333/RayTracingDemos).
 
 ## Features
 [√] Basic shapes <br/>
