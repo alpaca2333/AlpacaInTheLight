@@ -9,3 +9,4 @@
 #include <thread>
 #include <mutex>
 #include <cstdlib>
+#include <cassert>

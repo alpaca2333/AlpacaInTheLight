@@ -1,16 +1,17 @@
 /*
- * Ray tracing demo.
- *
- * @author  qwerty sun
+ * @author  qwertysun
  * @date    2018-07-19
  */
 
 
 #include "stdafx.h"
-#include "ppm.h"
-#include "object.h"
-#include "common.h"
-#include "material.h"
+
+#include "core/engine.h"
+#include "core/graph.h"
+#include "core/camera.h"
+
+#include "impl/objects.h"
+#include "impl/materials.h"
 
 using namespace std;
 
@@ -27,6 +28,7 @@ Color ColorSky(const Ray& r)
     Vector3 unitDir = r.Direction().UnitVector();
     auto t = 0.5 * (unitDir[1] + 1.0f);
     Vector3 result = {((1 - t) * Color(1, 1, 1) + t * Color(0.4, 0.6, 0.9))};
+    result = {0, 0, 0};
     return result;
 }
 
@@ -62,16 +64,13 @@ Color ColorBalls2(const Ray& r, Objects& os, int depth = 0)
     if (os.IsHit(r, 0, MAXFLOAT, hr))
     {
         if (depth > 50) {
-            if (r.refracted)
-            {
-                bool a = r.refracted;
-            }
             return {0, 0, 0};
         };
+
         Color c{0, 0, 0};
         for (auto& scatterInfo: hr.scatterInfos)
         {
-            c += scatterInfo.attenuation * ColorBalls2(scatterInfo. outRay, os, ++depth);
+            c += scatterInfo.attenuation * ColorBalls2(scatterInfo.outRay, os, ++depth);
         }
         return c;
     }
@@ -85,10 +84,10 @@ Color ColorBalls2(const Ray& r, Objects& os, int depth = 0)
 int DrawBalls(const char *filePath, int nx, int ny)
 {
     // Init camera
-    Vector3 lookFrom{-5, 0.2, -5};
+    Vector3 lookFrom{-5, 0.2, 4};
     Vector3 lookAt{0, 0, -1};
     double focus = (lookAt - lookFrom).Length();
-    float aperture = 0.2;
+    float aperture = 0;
     Camera camera(lookFrom, lookAt, {0, 1, 0}, 20, aperture, focus,
                   nx, ny);
 
@@ -107,6 +106,7 @@ int DrawBalls(const char *filePath, int nx, int ny)
     objects.Add(sp2);
     objects.Add(sp3);
     objects.Add(sp4);
+    objects.Add(sp5);
 
     for (int i = 0; i < 100; ++i)
     {
@@ -122,14 +122,15 @@ int DrawBalls(const char *filePath, int nx, int ny)
     // configure camera
     camera.SetColorHandler(ColorBalls2);
     camera.SetAntiAliasing(true);
-    camera.SetAaSamples(100);
+    camera.SetAaSamples(500);
     CachedPPM ppm(nx, ny, filePath);
     camera.Render(ppm, objects);
+    return 0;
 }
 
 int main()
 {
     const int nx = 1920, ny = 1080;
-    DrawBalls("/mnt/c/Users/qwertysun/Desktop/balls.ppm", nx, ny);
+    DrawBalls("/home/qwertysun/桌面/a.ppm", nx, ny);
     return 0;
 }

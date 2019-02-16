@@ -17,3 +17,15 @@ I would like to render an alpaca for myself. So i decide to write a ray tracing 
 [ ] Path tracing <br/>
 
 Still working on it!!
+
+## Build and Test
+Change dir to the root directory. 
+
+requires gcc 4.8.5 + and cmake 3.2+.
+
+``` bash
+mkdir build && cd build
+cmake ..
+make -j12
+./alpaca
+```
