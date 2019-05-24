@@ -1,7 +1,9 @@
 # AlpacaInTheLight
 Serious ray tracing renderer.
 
-I would like to render an alpaca for myself. So i decide to write a ray tracing renderer to do this. 
+I would like to render an alpaca for myself. So i decide to compose a ray tracing renderer to do this. 
+
+AND HWSB.
 
 ## Features
 [√] Basic shapes <br/>
